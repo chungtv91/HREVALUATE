@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "PromotionTime";
+
+    var lstEvaluateYear = (List<HR_Evaluate.Models.EvaluateYear>)ViewBag.EvaluateYear;
+}
+
+
+<h2>日常観察の全体情報</h2>
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <table class="table table-bordered ">
+                <tbody>
+
+                    <tr>
+                        <th><h3>観察年</h3></th>
+                        <th align="center" style=" vertical-align:middle">
+                            <h3>昇格時期</h3>
+                        </th>
+
+                        <th align="center" style=" vertical-align:middle">
+                            <h3>観察情報</h3>
+                        </th>
+                    </tr>
+                    @foreach (var item in lstEvaluateYear.ToList())
+                    {
+                <tr>
+                    <th align="center" style=" vertical-align:middle"><h3>@item.FromYear.Value.Year  ~ @item.ToYear.Value.Year</h3></th>
+                    <th align="center" style=" vertical-align:middle"> <h3>@item.NextEvaluatePeriod.Value.Month / @item.NextEvaluatePeriod.Value.Year</h3></th>
+                    @*<th align="center" style=" vertical-align:middle"><h3>@Html.ActionLink("Link", "ListUser", new { id = Session["bodid"] })</h3></th>*@
+                    <th align="center" style=" vertical-align:middle"><h3>@Html.ActionLink("Link", "ListUser", new { id = item.Id })</h3></th>
+                </tr>
+                    }
+                    @*<tr>
+                        <th align="center" style=" vertical-align:middle"><h3>2021 ~ 2022</h3></th>
+                        <th align="center" style=" vertical-align:middle"> <h3>1/2023</h3></th>
+                        <th align="center" style=" vertical-align:middle"><h3>@Html.ActionLink("Link", "ListUser", new { id = Session["bodid"] })</h3></th>
+                    </tr>*@
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>

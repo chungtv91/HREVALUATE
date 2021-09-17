@@ -1,0 +1,143 @@
+﻿@model List<ListUserViewModel>
+@{
+    ViewBag.Title = "List Evaluate User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <tr style="text-align:center">
+            <th style="text-align:center">
+                code
+            </th>
+            <th style="text-align:center">
+                Name
+            </th>
+            <th style="text-align:center">
+                Image
+            </th>
+            <th style="text-align:center">
+                Department
+            </th>
+            <th style="text-align:center">
+                Current Position
+            </th>
+            <th style="text-align:center">
+                Current Grade
+            </th>
+
+
+            <th style="text-align:center">
+                Evaluate<br />
+                View / Edit
+            </th>
+            <th style="text-align:center">
+                Period Evaluate
+            </th>
+            <th style="text-align:center">
+                Status
+            </th>
+            <th style="text-align:center">
+                Memo
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            if (item.IsEnable == 1)
+            {
+                <tr style="text-align:center">
+
+                    <td class="fw-bold">
+                        @item.EmployeeCode
+                    </td>
+
+                    <td class="fw-bold">
+                        @item.EmployeeName
+                    </td>
+
+                    <td>
+                        @if (!string.IsNullOrEmpty(item.ProfileImage))
+                        {
+                            <img src="@Url.Content(item.ProfileImage)" />
+                        }
+                    </td>
+
+                    <td class="fw-bold">
+                        @item.Department
+                    </td>
+                    <td class="fw-bold">
+                        @item.Position
+                    </td>
+                    <td class="fw-bold">
+                        @item.Level
+                    </td>
+                    <td class="fw-bold">
+                        @if (!item.HasSummary)
+                        {
+                            @Html.ActionLink("1st New", "Index", new { id = @item.EmployeeId })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("1st Edit", "Review", new { id = @item.EmployeeId }, null)
+                        }
+                        <br />  <hr />
+                        @if (!item.HasSummary)
+                        {
+                            @Html.ActionLink("2nd New", "Index2", new { id = @item.EmployeeId })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("2nd Edit", "Review2", new { id = @item.EmployeeId }, null)
+                        }
+                        <br />  <hr />
+                        @if (!item.HasSummary)
+                        {
+                            @Html.ActionLink("3rd New", "Index3", new { id = @item.EmployeeId })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("3rd Edit", "Review3", new { id = @item.EmployeeId }, null)
+                        }
+                    </td>
+                    <td>
+                        <span>30-12-2021</span><br />  <hr />
+                        <span>30-03-2022</span><br />  <hr />
+                        <span>30-06-2022</span>
+
+                    </td>
+                    <td class="fw-bold">
+
+
+                        @*@Html.ActionLink("Edit", "Index", new { id = @item.Employee.Id })
+                            <br />
+
+                            <hr />
+                            2nd
+
+                            @Html.ActionLink("Edit", "Index", new { id = @item.Employee.Id })
+                            <br />
+                            <hr />
+                            3rd*@
+                        <span class="@item.StatusCss">1st @item.Status</span> <br />  <hr />
+                        <span class="@item.StatusCss">2nd @item.Status</span> <br />  <hr />
+                        <span class="@item.StatusCss">3rd @item.Status</span>
+                        @*@Html.ActionLink("Edit", "Review", new { id = @item.EmployeeId })*@
+
+                    </td>
+                    <td align="center">
+
+                        @Html.ActionLink("1. メモ表 →", "BodInsertMemo", "Home", new { id = item.EmployeeId }, null)<br />  <hr />
+                        @Html.ActionLink("2. メモまとめ →", "ShowMemoHistory", "Home", new { id = item.EmployeeId }, null)
+                    </td>
+                    @*<td class="fw-bold text-center">
+                            <span class="@item.StatusCss">@item.Status</span>
+                        </td>*@
+                </tr>
+            }
+        }
+    </table>
+</div>

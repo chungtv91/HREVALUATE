@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/NewLayout.cshtml";
+}
+
+<h2>日常観察のメモ表</h2>
+@using (Html.BeginForm("Index", "BodMemo", new { area = "" }, FormMethod.Post, new { role = "form" }))
+{
+    <div class="row">
+        <div class="col-md-6">
+
+        </div>
+
+        <div class="col-md-12">
+            <table class="table table-bordered ">
+                <tbody>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td colspan="4" align="center" style=" vertical-align:middle">
+                            <h4>@DateTime.Now.Year 年</h4>
+                        </td>
+                        <td colspan="8" align="center" style=" vertical-align:middle">
+                            <h4>@DateTime.Now.AddYears(1).Year 年</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <th align="center" style=" vertical-align:middle"><h4>9月</h4></th>
+                        <th align="center" style=" vertical-align:middle">
+                            <h4>10月</h4>
+                        </th>
+                        <th align="center" style=" vertical-align:middle">
+                            <h4>11月</h4>
+                        </th>
+                        <th align="center" style=" vertical-align:middle">
+                            <h4>12月</h4>
+                        </th>
+                        <th align="center" style=" vertical-align:middle">
+                            <h4>1月</h4>
+                        </th>
+                        <th align="center" style=" vertical-align:middle">
+                            <h4>2月</h4>
+                        </th>
+                        <th align="center" style=" vertical-align:middle">
+                            <h4>3月</h4>
+                        </th>
+                        <th align="center" style=" vertical-align:middle">
+                            <h4>4月</h4>
+                        </th>
+                        <th align="center" style=" vertical-align:middle">
+                            <h4>5月</h4>
+                        </th>
+                        <th align="center" style=" vertical-align:middle">
+                            <h4>6月</h4>
+                        </th>
+                        <th align="center" style=" vertical-align:middle">
+                            <h4>7月</h4>
+                        </th>
+                        <th align="center" style=" vertical-align:middle">
+                            <h4>8月</h4>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td rowspan="3" style="vertical-align:middle"><h4>観察のメモ</h4></td>
+                        <td style="vertical-align:middle"><h4>良い点</h4></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td style=" vertical-align:middle">
+                            <h4>弱い点</h4>
+                        </td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td style=" vertical-align:middle">
+                            <h4>  改善点</h4>
+                        </td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                        <td style="vertical-align:middle"><textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td align="center"><div><span>@Html.ActionLink("Edit", "InsertBodMemo", new { id = 19 })</span></div></td>
+                        <td align="center"><div><span>@Html.ActionLink("Edit", "InsertBodMemo", new { id = 19 })</span></div></td>
+                        <td align="center"><div><span>@Html.ActionLink("Edit", "InsertBodMemo", new { id = 19 })</span></div></td>
+                        <td align="center"><div><span>@Html.ActionLink("Edit", "InsertBodMemo", new { id = 19 })</span></div></td>
+                        <td align="center"><div><span>@Html.ActionLink("Edit", "InsertBodMemo", new { id = 19 })</span></div></td>
+                        <td align="center"><div><span>@Html.ActionLink("Edit", "InsertBodMemo", new { id = 19 })</span></div></td>
+                        <td align="center"><div><span>@Html.ActionLink("Edit", "InsertBodMemo", new { id = 19 })</span></div></td>
+                        <td align="center"><div><span>@Html.ActionLink("Edit", "InsertBodMemo", new { id = 19 })</span></div></td>
+                        <td align="center"><div><span>@Html.ActionLink("Edit", "InsertBodMemo", new { id = 19 })</span></div></td>
+                        <td align="center"><div><span>@Html.ActionLink("Edit", "InsertBodMemo", new { id = 19 })</span></div></td>
+                        <td align="center"><div><span>@Html.ActionLink("Edit", "InsertBodMemo", new { id = 19 })</span></div></td>
+                        <td align="center"><div><span>@Html.ActionLink("Edit", "InsertBodMemo", new { id = 19 })</span></div></td>
+
+                    </tr>
+                <tbody>
+            </table>
+
+            <div class="text-center">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

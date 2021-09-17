@@ -1,0 +1,480 @@
+﻿@model HR_Evaluate.ViewModel.HrEvaluateViewModel
+@{
+    ViewBag.Title = "Home Page";
+    var lstQuestion = (List<HR_Evaluate.Models.Question>)ViewBag.ListQuestion;
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+}
+
+<div>
+    <h4 style="text-align:center;font-weight:bold">22年1月日常観察経由コンピテンシー評価シート（1回目）</h4>
+    <h4 style="text-align:center;font-weight:bold">MẪU ĐÁNH GIÁ NĂNG LỰC THÔNG QUA QUAN SÁT CÔNG VIỆC HÀNG NGÀY</h4>
+</div>
+
+<div ng-app="">
+
+    @using (Html.BeginForm("Index3", "Home", new { area = "" }, FormMethod.Post, new { role = "form" }))
+    {
+    <div class="row">
+        <h4 class="fw-bold">1. 観察候補者の情報/Thông tin về các ứng cử viên để quan sát</h4>
+        <div class="col-md-6">
+
+            <table class="table table-bordered ">
+                <tbody>
+                    <tr>
+                        <td rowspan="5" style=" vertical-align:middle">
+
+                            <img src="@Url.Content(ViewBag.Emp.Img)" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="fw-bold">
+                                観察候補者
+                            </p>
+                        </td>
+                        <td>
+                            <p class="fw-bold">@ViewBag.Emp.Name</p>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p class="fw-bold">
+                                社員コード
+                            </p>
+                        </td>
+                        <td>
+                            <p class="fw-bold">@ViewBag.Emp.Code</p>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="fw-bold">部署</p>
+                        </td>
+                        <td>
+                            <p class="fw-bold">
+                                @ViewBag.Emp.Department.DepartmentName
+                            </p>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="fw-bold">
+                                昇格推薦時期
+                            </p>
+                        </td>
+                        <td>
+                            <p class="fw-bold">22年１月</p>
+                        </td>
+
+                    </tr>
+                    
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="col-md-6">
+            <table class="table table-bordered ">
+                <tbody>
+                    <tr>
+                        <td>
+                            <p class="fw-bold">
+                                項目
+                            </p>
+                        </td>
+                        <td>
+                            <p class="fw-bold">
+                                現在情報
+                            </p>
+                        </td>
+                        <td>
+                            <p class="fw-bold">
+                                昇格推薦情報
+                            </p>
+                        </td>
+                        <td>
+                            <p class="fw-bold">
+                                経過観察テーマ
+                                （添付ファイル）
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="fw-bold">
+                                等級
+                            </p>
+                        </td>
+                        <td>
+                            <p class="fw-bold">
+                                @ViewBag.Emp.Level.LevelName
+                            </p>
+                        </td>
+                        <td>
+                            <p class="fw-bold">
+                                @ViewBag.NextLevelName.LevelName
+                            </p>
+                        </td>
+                        <td rowspan="3">
+                            <p class="fw-bold">
+                                @ViewBag.Emp.Targets
+                            </p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <p class="fw-bold">
+                                職位
+                            </p>
+                        </td>
+                        <td>
+                            <p class="fw-bold">
+                                @ViewBag.Emp.Position.PositionName
+                            </p>
+                        </td>
+                        <td>
+                            <p class="fw-bold">
+                                @ViewBag.NextPositionName.PositionName
+                            </p>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <p class="fw-bold">
+
+                            </p>
+                        </td>
+                        <td>
+                            <p class="fw-bold">
+
+                            </p>
+                        </td>
+                        <td>
+                            <p class="fw-bold">
+
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-12"><h4 class="fw-bold"> 2. 観察の内容</h4></div>
+
+
+
+        <div class="col-md-12">
+
+            <table class="table table-bordered ">
+                <tbody>
+
+                    <tr>
+                        <th align="center" style="text-align:center; vertical-align: middle">
+                            評価項目
+                            Mục đánh giá
+                        </th>
+                        <th align="center" style="text-align:center; vertical-align: middle">
+                            詳細コンピテンシー/Năng lực chi tiết
+                        </th>
+                        <th align="center" style="text-align:center">観察のコメント（育成要点）/Nhận xét quan sát (điểm rèn luyện)</th>
+                        <th align="center" style="text-align:center">点</th>
+                    </tr>
+                    <tr>
+                        <th align="center" style="text-align:center; vertical-align: middle">
+                            1. 成果追求
+                            Theo đuổi mục tiêu
+                        </th>
+                        <td>
+                            <input type="hidden" name="VMlstQuestions[0].VMId" value="@lstQuestion[0].Id" />
+                            <input type="hidden" name="VMlstQuestions[0].VMQuestionName" value="@lstQuestion[0].QuestionName" />
+
+                            @lstQuestion[0].QuestionName
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;" name="VMlstQuestions[0].VMAnswerName" class="form-control" rows="3" placeholder="Comment"></textarea>
+                            </div>
+                        </td>
+                        <td>
+                            <input class="form-control" data-val="true" name="VMlstQuestions[0].NumberScore" placeholder="1-5" type="number" value="" min="1" max="5" style="width:80px" ng-model="number1">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th rowspan="2" align="center" style="text-align:center; vertical-align: middle">
+                            2. 役割認識
+                            Nhận thức vai trò
+                        </th>
+                        <td>
+                            <input type="hidden" name="VMlstQuestions[1].VMId" value="@lstQuestion[1].Id" />
+                            <input type="hidden" name="VMlstQuestions[1].VMQuestionName" value="@lstQuestion[1].QuestionName" />
+
+                            @lstQuestion[1].QuestionName
+
+                        <td>
+                            <div class="form-group">
+                                <textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;" name="VMlstQuestions[1].VMAnswerName" class="form-control" rows="3" placeholder="Comment"></textarea>
+                            </div>
+                        </td>
+                        <td>
+                            <input class="form-control" data-val="true" name="VMlstQuestions[1].NumberScore" placeholder="1-5" type="number" value="" min="1" max="5" style="width:80px" ng-model="number2">
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td>
+                            <input type="hidden" name="VMlstQuestions[2].VMId" value="@lstQuestion[2].Id" />
+                            <input type="hidden" name="VMlstQuestions[2].VMQuestionName" value="@lstQuestion[2].QuestionName" />
+                            @lstQuestion[2].QuestionName
+
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;" name="VMlstQuestions[2].VMAnswerName" class="form-control" rows="3" placeholder="Comment"></textarea>
+                            </div>
+                        </td>
+                        <td>
+                            <input class="form-control" data-val="true" name="VMlstQuestions[2].NumberScore" placeholder="1-5" type="number" value="" min="1" max="5" style="width:80px" ng-model="number3">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th rowspan="3" align="center" style="text-align:center; vertical-align: middle">
+                            3. 問題解決
+                            Giải quyết vấn đề
+                        </th>
+                        <td>
+                            <input type="hidden" name="VMlstQuestions[3].VMId" value="@lstQuestion[3].Id" />
+                            <input type="hidden" name="VMlstQuestions[3].VMQuestionName" value="@lstQuestion[3].QuestionName" />
+                            @lstQuestion[3].QuestionName
+
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;" name="VMlstQuestions[3].VMAnswerName" class="form-control" rows="3" placeholder="Comment"></textarea>
+                            </div>
+                        </td>
+                        <td>
+                            <input class="form-control" data-val="true" name="VMlstQuestions[3].NumberScore" placeholder="1-5" type="number" value="" min="1" max="5" style="width:80px" ng-model="number4">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="hidden" name="VMlstQuestions[4].VMId" value="@lstQuestion[4].Id" />
+                            <input type="hidden" name="VMlstQuestions[4].VMQuestionName" value="@lstQuestion[4].QuestionName" />
+                            @lstQuestion[4].QuestionName
+
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;" name="VMlstQuestions[4].VMAnswerName" class="form-control" rows="3" placeholder="Comment"></textarea>
+                            </div>
+                        </td>
+                        <td>
+                            <input class="form-control" data-val="true" name="VMlstQuestions[4].NumberScore" placeholder="1-5" type="number" value="" min="1" max="5" style="width:80px" ng-model="number5">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input type="hidden" name="VMlstQuestions[5].VMId" value="@lstQuestion[5].Id" />
+                            <input type="hidden" name="VMlstQuestions[5].VMQuestionName" value="@lstQuestion[5].QuestionName" />
+                            @lstQuestion[5].QuestionName
+
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;" name="VMlstQuestions[5].VMAnswerName" class="form-control" rows="3" placeholder="Comment"></textarea>
+                            </div>
+                        </td>
+                        <td>
+                            <input class="form-control" data-val="true" name="VMlstQuestions[5].NumberScore" placeholder="1-5" type="number" value="" min="1" max="5" style="width:80px" ng-model="number6">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2" align="center" style="text-align: center; vertical-align: middle">
+                            4. リーダーシップ
+                            Khả năng lãnh đạo
+                        </th>
+                        <td>
+                            <input type="hidden" name="VMlstQuestions[6].VMId" value="@lstQuestion[6].Id" />
+                            <input type="hidden" name="VMlstQuestions[6].VMQuestionName" value="@lstQuestion[6].QuestionName" />
+                            @lstQuestion[6].QuestionName
+
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;" name="VMlstQuestions[6].VMAnswerName" class="form-control" rows="3" placeholder="Comment"></textarea>
+                            </div>
+                        </td>
+                        <td>
+                            <input class="form-control" data-val="true" name="VMlstQuestions[6].NumberScore" placeholder="1-5" type="number" value="" min="1" max="5" style="width:80px" ng-model="number7">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="hidden" name="VMlstQuestions[7].VMId" value="@lstQuestion[7].Id" />
+                            <input type="hidden" name="VMlstQuestions[7].VMQuestionName" value="@lstQuestion[7].QuestionName" />
+                            @lstQuestion[7].QuestionName
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;" name="VMlstQuestions[7].VMAnswerName" class="form-control" rows="3" placeholder="Comment"></textarea>
+                            </div>
+                        </td>
+                        <td>
+                            <input class="form-control" data-val="true" name="VMlstQuestions[7].NumberScore" placeholder="1-5" type="number" value="" min="1" max="5" style="width:80px" ng-model="number8">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th rowspan="2" align="center" style="text-align:center; vertical-align:middle">
+                            5. 組織・人材育成
+                            Phát triển tổ chức và nhân sự
+                        </th>
+                        <td>
+                            <input type="hidden" name="VMlstQuestions[8].VMId" value="@lstQuestion[8].Id" />
+                            <input type="hidden" name="VMlstQuestions[8].VMQuestionName" value="@lstQuestion[8].QuestionName" />
+
+                            @lstQuestion[8].QuestionName
+
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;" name="VMlstQuestions[8].VMAnswerName" class="form-control" rows="3" placeholder="Comment"></textarea>
+                            </div>
+                        </td>
+                        <td>
+                            <input class="form-control" data-val="true" name="VMlstQuestions[8].NumberScore" placeholder="1-5" type="number" value="" min="1" max="5" style="width:80px" ng-model="number9">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="hidden" name="VMlstQuestions[9].VMId" value="@lstQuestion[9].Id" />
+                            <input type="hidden" name="VMlstQuestions[9].VMQuestionName" value="@lstQuestion[9].QuestionName" />
+                            @lstQuestion[9].QuestionName
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;" name="VMlstQuestions[9].VMAnswerName" class="form-control" rows="3" placeholder="Comment"></textarea>
+                            </div>
+                        </td>
+                        <td>
+                            <input class="form-control" data-val="true" name="VMlstQuestions[9].NumberScore" placeholder="1-5" type="number" value="" min="1" max="5" style="width:80px" ng-model="number10">
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+        <div class="col-md-12">
+
+            <table class="table table-bordered ">
+                <tbody>
+                    <tr>
+                        <th rowspan="2" align="center" style="text-align:center; vertical-align:middle">
+                            1回目の観察結果のまとめ
+                        </th>
+                        <th>
+                            強い点
+                        </th>
+
+                        <td>
+                            <div class="form-group">
+                                <input type="hidden" name="VMlstQuestions[10].VMId" value="@lstQuestion[10].Id" />
+                                <input type="hidden" name="VMlstQuestions[10].VMQuestionName" value="@lstQuestion[10].QuestionName" />
+                                <textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;" name="VMlstQuestions[10].VMAnswerName" class="form-control" rows="3" placeholder="Comment"></textarea>
+                            </div>
+                        </td>
+                        <th align="center" style="text-align:center; vertical-align:middle">
+                            Xếp loại giữa các ứng viên<br />  各候補者間のランク
+                        </th>
+                        <td rowspan="2">
+                            <p>Tổng điểm/総点数：</p>
+                            <p>・ 21点以上：昇格推薦できる（22年1月に昇格推薦者）</p>
+                            <p>
+                                ・20点以下：再教育要
+                                （23年1月に昇格推薦検討）
+                            </p>
+                        </td>
+                        <td rowspan="2">
+
+                            <input class="form-control" data-val="true" id="EmployeeName" name="EmployeeName" placeholder="1-50" type="hidden" value="" min="1" max="50" style="width:80px">
+                            <h3>{{number1+number2+number3+number4+number5+number6+number7+number8+number9+number10}}</h3>
+                           
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            弱い点・改善点
+                        </th>
+
+                        <td>
+                            <div class="form-group">
+                                <input type="hidden" name="VMlstQuestions[11].VMId" value="@lstQuestion[11].Id" />
+                                <input type="hidden" name="VMlstQuestions[11].VMQuestionName" value="@lstQuestion[11].QuestionName" />
+                                <textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;" name="VMlstQuestions[11].VMAnswerName" class="form-control" rows="3" placeholder="Comment"></textarea>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <input type="hidden" name="VMlstQuestions[12].VMId" value="@lstQuestion[12].Id" />
+                                <input type="hidden" name="VMlstQuestions[12].VMQuestionName" value="@lstQuestion[12].QuestionName" />
+                                <textarea style="min-height: 75px; margin: 0px; width: 303px; height: 133px;" name="VMlstQuestions[12].VMAnswerName" class="form-control" rows="3" placeholder="Comment"></textarea>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="text-center">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+
+
+        <h4 style="text-decoration:underline">Ghi chú/備考：</h4>
+        <p> - Thang điểm: 50 điểm, mỗi mục: 5 điểm/ 総点数：　50点、各項目：5点</p>
+        <div class="col-md-6">
+            <table class="table table-bordered ">
+                <tbody>
+                    <tr>
+                        <th>5</th>
+                        <td>Vượt mức yêu cầu/ 上級レベルの資格基準を全ての項目において完全に満たしている。</td>
+                    </tr>
+                    <tr>
+                        <th>4</th>
+                        <td>Hoàn toàn đáp ứng yêu cầu/ 上級レベルの資格基準を全ての項目においてほぼ満たしている。</td>
+                    </tr>
+                    <tr>
+                        <th>3</th>
+                        <td>
+                            Đáp ứng yêu cầu/上級レベルの資格基準
+                            を一部満たしていない項目があるが、大部分の項目はほぼ満たしている。
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>2</th>
+                        <td>Năng lực chưa đáp ứng đủ yêu cầu/ 上級レベルの資格基準の大部分の項目において満たしていない。</td>
+                    <tr>
+                        <th>1</th>
+                        <td>Hoàn toàn không đáp ứng đủ yêu cầu/ 上級レベルの資格基準をまったく満たしていない。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+        @section Scripts {
+            <script src="~/Scripts/jquery.validate.min.js"></script>
+            <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+        }
+    }
+</div>

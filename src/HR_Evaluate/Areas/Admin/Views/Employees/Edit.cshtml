@@ -1,0 +1,155 @@
+﻿@model HR_Evaluate.Models.Employee
+
+@{
+    ViewBag.Title = "Edit";
+
+    <link href="~/Scripts/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/ckfinder/ckfinder.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+}
+
+<h2>Edit Attendee</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @*<h4>Employee</h4>
+        <hr />*@
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Img, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Img, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Img, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="button" id="Browser" value="Browser" class="btn btn-info" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Department", htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+            @Html.DropDownList("DepartmentId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        @Html.Label("Current Position", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("CurrentPositionId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CurrentPositionId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Current Level", htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+            @Html.DropDownList("CurrentLevelId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CurrentLevelId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DateEvaluate, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DateEvaluate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DateEvaluate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Targets, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*@Html.TextAreaFor(model => model.Targets,  htmlAttributes : new { @class = "modify-textarea"})*@
+            @Html.TextAreaFor(model => model.Targets, new { htmlAttributes = new { @class = "form-control" }, id = "txtTarget" })
+
+            @Html.ValidationMessageFor(model => model.Targets, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Next Position", htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.NextPositionId, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.DropDownList("NextPositionId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NextPositionId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Next Level", htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.NextLevelId, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.DropDownList("NextLevelId", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.NextLevelId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Is Enable", htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.NextLevelId, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.EditorFor(model=>model.IsEnable, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NextLevelId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script language="javascript" type="text/javascript">
+
+    CKEDITOR.replace("txtTarget");
+
+    $(function () {
+        $("#Browser").click(function () {
+
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileurl) {
+                $("#Img").val(fileurl);
+            };
+            ckfinder.popup();
+        });
+    });
+
+</script>

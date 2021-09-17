@@ -1,0 +1,72 @@
+﻿@model IEnumerable<HR_Evaluate.Models.BOD>
+
+@{
+    ViewBag.Title = "Index";
+
+    <style type="text/css">
+        .headTable > th {
+            font-weight: bold;
+            background-color: cadetblue
+        }
+    </style>
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-bordered">
+    <tr>
+        <th class="newhead-table">
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th class="headTable">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        @*<th class="headTable">
+                @Html.DisplayNameFor(model => model.Img)
+            </th>*@
+
+        <th class="headTable">
+            @Html.DisplayNameFor(model => model.Department.DepartmentName)
+        </th>
+        <th class="headTable">
+            @Html.DisplayNameFor(model => model.Position.PositionName)
+        </th>
+        <th class="headTable">
+            <h4>Option</h4>
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Img)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Position.PositionName)
+            </td>
+
+
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Evaluate Success</h2>
+
+
+<div class="row-md-6">
+    <h4 class="text-info">Thanks for your Evaluate.</h4>
+</div>
+@*<div class="row-md-6">
+    <h4 class="btn btn-info" style="background-color: #5bde6b">@Html.ActionLink("ComeBack to List User Evaluate", "ListUser", new { id = Session["bodid"] })</h4>
+</div>*@
+
+<div class="row-md-6">
+    <h4 class="btn btn-info" style="background-color: #5bde6b">@Html.ActionLink("ComeBack to List User Evaluate", "ListUser", new { id = Session["bodid"] })</h4>
+    @*<h4 class="btn btn-info" style="background-color: #ffd800">@Html.ActionLink("Review your Evaluate", "Review", new { id = Session["empid"] })</h4>*@
+@*<h4 class="btn btn-info" style="background-color: #ffd800">@Html.ActionLink("Review your Evaluate", "Review", new { id = 1 })</h4>*@
+</div>

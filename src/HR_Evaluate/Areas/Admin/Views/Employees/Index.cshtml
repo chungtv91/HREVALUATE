@@ -1,0 +1,190 @@
+﻿@*@model IEnumerable<HR_Evaluate.Models.Employee>
+
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <div class="card-toolbar">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">
+                <h3>Employee List</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer">
+                        <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                            <th>
+                                @Html.DisplayNameFor(model => model.Department.DepartmentName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Level.LevelName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Position.PositionName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Code)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Img)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DateEvaluate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Targets)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NextPositionId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NextLevelId)
+                            </th>
+                            <th>Action</th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Level.LevelName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Position.PositionName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Code)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    <img src="@Url.Content(@item.Img)" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DateEvaluate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Targets)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NextPositionId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NextLevelId)
+                                </td>
+                                <td class="text-end">
+                                    <div class="d-flex- align-items-center" gap-5>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>*@
+
+
+@model IEnumerable<HR_Evaluate.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Department.DepartmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Level.LevelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position.PositionName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateEvaluate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Targets)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NextPositionId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NextLevelId)
+        </th>
+        <th>Option</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Level.LevelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position.PositionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <img src="@Url.Content(@item.Img)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateEvaluate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Targets)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NextPositionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NextLevelId)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
