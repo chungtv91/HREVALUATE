@@ -78,29 +78,29 @@
                     <td class="fw-bold">
                         @if (!item.HasSummary)
                         {
-                            @Html.ActionLink("1st New", "Index", new { id = @item.EmployeeId })
+                            @Html.ActionLink("1st New", "Index", new { id = @item.EmployeeId, responseNo=1 })
                         }
                         else
                         {
-                            @Html.ActionLink("1st Edit", "Review", new { id = @item.EmployeeId }, null)
+                            @Html.ActionLink("1st Edit", "Review", new { id = @item.EmployeeId, responseNo =1 }, null)
                         }
                         <br />  <hr />
                         @if (!item.HasSummary)
                         {
-                            @Html.ActionLink("2nd New", "Index2", new { id = @item.EmployeeId })
+                            @Html.ActionLink("2nd New", "Index", new { id = @item.EmployeeId, responseNo =2 })
                         }
                         else
                         {
-                            @Html.ActionLink("2nd Edit", "Review2", new { id = @item.EmployeeId }, null)
+                            @Html.ActionLink("2nd Edit", "Review", new { id = @item.EmployeeId, responseNo =2 }, null)
                         }
                         <br />  <hr />
                         @if (!item.HasSummary)
                         {
-                            @Html.ActionLink("3rd New", "Index3", new { id = @item.EmployeeId })
+                            @Html.ActionLink("3rd New", "Index", new { id = @item.EmployeeId, responseNo =3 })
                         }
                         else
                         {
-                            @Html.ActionLink("3rd Edit", "Review3", new { id = @item.EmployeeId }, null)
+                            @Html.ActionLink("3rd Edit", "Review", new { id = @item.EmployeeId, responseNo =3 }, null)
                         }
                     </td>
                     <td>

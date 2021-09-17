@@ -16,7 +16,7 @@ namespace HR_Evaluate.Controllers
         private readonly HrEvaluateDatacontext _dbContext = new HrEvaluateDatacontext();
 
         [HttpGet]
-        public ActionResult Index(int id)
+        public ActionResult Index(int id,int responseNo=1)
         {
             try
             {
@@ -94,138 +94,7 @@ namespace HR_Evaluate.Controllers
             return RedirectToAction("ListUser", new { id = (int)Session["bodid"] });
         }
 
-        [HttpGet]
-        public ActionResult Index2(int id)
-        {
-            try
-            {
-                Session["empid"] = id;
-
-                var UserInfo = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
-
-                var getNexPositionID = UserInfo.NextPositionId;
-
-                var getNexLevelID = UserInfo.NextLevelId;
-                ViewBag.NextPositionName = _dbContext.Positions.FirstOrDefault(x => x.Id == getNexPositionID);
-                ViewBag.NextLevelName = _dbContext.Levels.FirstOrDefault(x => x.Id == getNexLevelID);
-                ViewBag.ListQuestion = _dbContext.Questions.Where(x => x.LevelId == UserInfo.CurrentLevelId).OrderBy(x => x.SortOrder).ToList();
-                ViewBag.Emp = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Index2(ViewModel.HrEvaluateViewModel hrviewmodel)
-        {
-            try
-            {
-                //var checkAnswerisNull = hrviewmodel.VMlstQuestions.Any(x => x.VMAnswerName == null);
-                //if (checkAnswerisNull)
-                //{
-                //    return JavaScript("全てコメントのところにコメントを入れてください -　The comment is not null or empty");
-                //}
-
-                foreach (var item in hrviewmodel.VMlstQuestions)
-                {
-                    var sum = new Sumary
-                    {
-                        BodID = (int)Session["bodid"],
-                        EmpID = (int)Session["empid"],
-                        QuestionID = item.VMId,
-                        AnswerName = item.VMAnswerName,
-                        Score = 0,
-                        CreateDate = DateTime.Now,
-                        UpdateDate = DateTime.Now,
-                        Evaluatetimes = 2
-                    };
-                    _dbContext.Sumaries.Add(sum);
-
-                    if (item.NumberScore != null)
-                    {
-                        sum.Score = item.NumberScore;
-                    }
-                }
-
-                await _dbContext.SaveChangesAsync();
-                return RedirectToAction("Success");
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Error = ex.Message;
-            }
-            return RedirectToAction("ListUser", new { id = (int)Session["bodid"] });
-        }
-
-        [HttpGet]
-        public ActionResult Index3(int id)
-        {
-            try
-            {
-                Session["empid"] = id;
-
-                var UserInfo = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
-
-                var getNexPositionID = UserInfo.NextPositionId;
-
-                var getNexLevelID = UserInfo.NextLevelId;
-                ViewBag.NextPositionName = _dbContext.Positions.FirstOrDefault(x => x.Id == getNexPositionID);
-                ViewBag.NextLevelName = _dbContext.Levels.FirstOrDefault(x => x.Id == getNexLevelID);
-                ViewBag.ListQuestion = _dbContext.Questions.Where(x => x.LevelId == UserInfo.CurrentLevelId).OrderBy(x => x.SortOrder).ToList();
-                ViewBag.Emp = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return View();
-        }
-
-        [HttpPost]
-        public async Task<ActionResult> Index3(ViewModel.HrEvaluateViewModel hrviewmodel)
-        {
-            try
-            {
-                //var checkAnswerisNull = hrviewmodel.VMlstQuestions.Any(x => x.VMAnswerName == null);
-                //if (checkAnswerisNull)
-                //{
-                //    return JavaScript("全てコメントのところにコメントを入れてください -　The comment is not null or empty");
-                //}
-
-                foreach (var item in hrviewmodel.VMlstQuestions)
-                {
-                    var sum = new Sumary
-                    {
-                        BodID = (int)Session["bodid"],
-                        EmpID = (int)Session["empid"],
-                        QuestionID = item.VMId,
-                        AnswerName = item.VMAnswerName,
-                        Score = 0,
-                        CreateDate = DateTime.Now,
-                        UpdateDate = DateTime.Now,
-                        Evaluatetimes = 3
-                    };
-                    _dbContext.Sumaries.Add(sum);
-
-                    if (item.NumberScore != null)
-                    {
-                        sum.Score = item.NumberScore;
-                    }
-                }
-
-                await _dbContext.SaveChangesAsync();
-                return RedirectToAction("Success");
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Error = ex.Message;
-            }
-            return RedirectToAction("ListUser", new { id = (int)Session["bodid"] });
-        }
-
+       
         [HttpGet]
         public async Task<ActionResult> ListUser(int id)
         {
@@ -268,7 +137,7 @@ namespace HR_Evaluate.Controllers
         }
 
         [HttpGet]
-        public ActionResult Review(int id)
+        public ActionResult Review(int id, int responseNo=1)
         {
             try
             {
@@ -299,7 +168,7 @@ namespace HR_Evaluate.Controllers
         {
             try
             {
-               
+                //responseNo
                 int bodid = (int)Session["bodid"];
                 int empid = Convert.ToInt32(TempData["empid"]);
                 var getSummary = _dbContext.Sumaries.Where(x => x.BodID == bodid && x.EmpID == empid && x.Evaluatetimes == 1).ToList();
@@ -337,142 +206,8 @@ namespace HR_Evaluate.Controllers
             }
             return RedirectToAction("ListUser", new { id = (int)Session["bodid"] });
         }
-        [HttpGet]
-        public ActionResult Review2(int id)
-        {
-            try
-            {
-                var bodid = (int)Session["bodid"];
-
-                TempData["empid"] = id;
-
-                var UserInfo = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
-
-                var getNexPositionID = UserInfo.NextPositionId;
-
-                var getNexLevelID = UserInfo.NextLevelId;
-                ViewBag.NextPositionName = _dbContext.Positions.FirstOrDefault(x => x.Id == getNexPositionID);
-                ViewBag.NextLevelName = _dbContext.Levels.FirstOrDefault(x => x.Id == getNexLevelID);
-                ViewBag.ListQuestion = _dbContext.Questions.Where(x => x.LevelId == UserInfo.CurrentLevelId).OrderBy(x => x.SortOrder).ToList();
-                ViewBag.Emp = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
-                ViewBag.listAnswer = _dbContext.Sumaries.Where(x => x.EmpID == id && x.BodID == bodid && x.Evaluatetimes == 2).ToList();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            return View();
-        }
-        [HttpPost]
-        public async Task<ActionResult> Review2(ViewModel.HrEvaluateViewModel hrviewmodel)
-        {
-            try
-            {
-                int bodid = (int)Session["bodid"];
-                int empid = Convert.ToInt32(TempData["empid"]);
-                var getSummary = _dbContext.Sumaries.Where(x => x.BodID == bodid && x.EmpID == empid && x.Evaluatetimes == 2).ToList();
-
-                if (getSummary != null)
-                {
-                    int count = 0;
-                    foreach (var item in hrviewmodel.VMlstQuestions)
-                    {
-                        if (item.NumberScore != null)
-                        {
-                            getSummary[count].AnswerName = item.VMAnswerName;
-                            getSummary[count].Score = item.NumberScore;
-                            getSummary[count].TotalScore = 0;
-                            getSummary[count].UpdateDate = DateTime.Now;
-                        }
-                        else
-                        {
-                            getSummary[count].AnswerName = item.VMAnswerName;
-                            getSummary[count].Score = 0;
-                            getSummary[count].TotalScore = 0;
-                            getSummary[count].UpdateDate = DateTime.Now;
-                        }
-                        count++;
-                    }
-
-                    var changesCount = await _dbContext.SaveChangesAsync();
-
-                    return RedirectToAction("Success");
-                }
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Error = ex.Message;
-            }
-            return RedirectToAction("ListUser", new { id = (int)Session["bodid"] });
-        }
-        [HttpGet]
-        public ActionResult Review3(int id)
-        {
-            try
-            {
-                var bodid = (int)Session["bodid"];
-
-                TempData["empid"] = id;
-
-                var UserInfo = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
-
-                var getNexPositionID = UserInfo.NextPositionId;
-
-                var getNexLevelID = UserInfo.NextLevelId;
-                ViewBag.NextPositionName = _dbContext.Positions.FirstOrDefault(x => x.Id == getNexPositionID);
-                ViewBag.NextLevelName = _dbContext.Levels.FirstOrDefault(x => x.Id == getNexLevelID);
-                ViewBag.ListQuestion = _dbContext.Questions.Where(x => x.LevelId == UserInfo.CurrentLevelId).OrderBy(x => x.SortOrder).ToList();
-                ViewBag.Emp = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
-                ViewBag.listAnswer = _dbContext.Sumaries.Where(x => x.EmpID == id && x.BodID == bodid).ToList();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            return View();
-        }
-        [HttpPost]
-        public async Task<ActionResult> Review3(ViewModel.HrEvaluateViewModel hrviewmodel)
-        {
-            try
-            {
-                int bodid = (int)Session["bodid"];
-                int empid = Convert.ToInt32(TempData["empid"]);
-                var getSummary = _dbContext.Sumaries.Where(x => x.BodID == bodid && x.EmpID == empid && x.Evaluatetimes == 3).ToList();
-
-                if (getSummary != null)
-                {
-                    int count = 0;
-                    foreach (var item in hrviewmodel.VMlstQuestions)
-                    {
-                        if (item.NumberScore != null)
-                        {
-                            getSummary[count].AnswerName = item.VMAnswerName;
-                            getSummary[count].Score = item.NumberScore;
-                            getSummary[count].TotalScore = 0;
-                            getSummary[count].UpdateDate = DateTime.Now;
-                        }
-                        else
-                        {
-                            getSummary[count].AnswerName = item.VMAnswerName;
-                            getSummary[count].Score = 0;
-                            getSummary[count].TotalScore = 0;
-                            getSummary[count].UpdateDate = DateTime.Now;
-                        }
-                        count++;
-                    }
-
-                    var changesCount = await _dbContext.SaveChangesAsync();
-
-                    return RedirectToAction("Success");
-                }
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Error = ex.Message;
-            }
-            return RedirectToAction("ListUser", new { id = (int)Session["bodid"] });
-        }
+       
+       
 
         [HttpGet]
         public ActionResult BodInsertMemo(int id)
