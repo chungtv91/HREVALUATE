@@ -173,7 +173,6 @@
     <Compile Include="Areas\Admin\Controllers\SumariesController.cs" />
     <Compile Include="Areas\Admin\Controllers\SummariesResultController.cs" />
     <Compile Include="Commons\CollectionExtensions.cs" />
-    <Compile Include="Controllers\BodMemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="CS9.cs" />
@@ -7286,8 +7285,6 @@
     <Content Include="Views\Home\Review2.cshtml" />
     <Content Include="Views\Home\Review3.cshtml" />
     <Content Include="Views\Home\PromotionTime.cshtml" />
-    <Content Include="Views\BodMemo\Index.cshtml" />
-    <Content Include="Views\BodMemo\InsertBodMemo.cshtml" />
     <Content Include="Views\Home\BodInsertMemo.cshtml" />
     <Content Include="Views\Home\ShowMemoHistory.cshtml" />
   </ItemGroup>

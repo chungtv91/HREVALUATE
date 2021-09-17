@@ -30,12 +30,9 @@
 
         public int? MonthOfMemo { get; set; }
 
-        public int? EvaluateYearId { get; set; }
-
         public virtual Employee Employee { get; set; }
 
         public virtual BOD BOD { get; set; }
 
-        public virtual EvaluateYear EvaluateYear { get; set; }
     }
 }
