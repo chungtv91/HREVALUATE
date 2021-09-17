@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="~/">
+    <title>Admin HR Evaluate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="~/favicon.ico" asp-append-version="true" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link href="~/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+    <link href="~/assets/css/style.bundle.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+    <script src="~/Scripts/ckfinder/ckfinder.js" asp-append-version="true"></script>
+</head>
+
+<body id="kt_body" class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed toolbar-tablet-and-mobile-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;--kt-toolbar-height-tablet-and-mobile:55px">
+
+    <div class="d-flex flex-column flex-root">
+        <!--begin::Page-->
+        <div class="page d-flex flex-row flex-column-fluid">
+            <!--begin::Aside-->
+            <div id="kt_aside" class="aside aside-light aside-hoverable" data-kt-drawer="true" data-kt-drawer-name="aside" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_aside_mobile_toggle">
+                <!--begin::Brand-->
+                <div class="aside-logo flex-column-auto" id="kt_aside_logo">
+                    <!--begin::Logo-->
+                    <a href="index.html">
+                        <img alt="Logo" src="~/assets/media/logos/logo-1-dark.svg" class="h-15px logo" />
+                    </a>
+                </div>
+                <!--end::Brand-->
+                <!--begin::Aside menu-->
+                <div class="aside-menu flex-column-fluid">
+                    <!--begin::Aside Menu-->
+                    <div class="hover-scroll-overlay-y my-5 my-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-offset="0">
+                        <!--begin::Menu-->
+                        <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true">
+                            <div class="menu-item">
+                                @*<a class="menu-link" href="~/Admin/AdminHome/Index">*@
+                                <a class="menu-link" href="#">
+                                    <span class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/stockholm/Design/PenAndRuller.svg-->
+                                        <span class="svg-icon svg-icon-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <path d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z" fill="#000000" opacity="0.3" />
+                                                <path d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z" fill="#000000" />
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                    <span class="menu-title">Logout</span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <div class="menu-content pt-8 pb-2">
+                                    <span class="menu-section text-muted text-uppercase fs-8">Menu</span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <a href="@Url.Action("Index", "Roles")" class="menu-link">
+                                    <span class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/stockholm/Code/Compiling.svg-->
+                                        <span class="svg-icon svg-icon-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <path d="M2.56066017,10.6819805 L4.68198052,8.56066017 C5.26776695,7.97487373 6.21751442,7.97487373 6.80330086,8.56066017 L8.9246212,10.6819805 C9.51040764,11.267767 9.51040764,12.2175144 8.9246212,12.8033009 L6.80330086,14.9246212 C6.21751442,15.5104076 5.26776695,15.5104076 4.68198052,14.9246212 L2.56066017,12.8033009 C1.97487373,12.2175144 1.97487373,11.267767 2.56066017,10.6819805 Z M14.5606602,10.6819805 L16.6819805,8.56066017 C17.267767,7.97487373 18.2175144,7.97487373 18.8033009,8.56066017 L20.9246212,10.6819805 C21.5104076,11.267767 21.5104076,12.2175144 20.9246212,12.8033009 L18.8033009,14.9246212 C18.2175144,15.5104076 17.267767,15.5104076 16.6819805,14.9246212 L14.5606602,12.8033009 C13.9748737,12.2175144 13.9748737,11.267767 14.5606602,10.6819805 Z" fill="#000000" opacity="0.3" />
+                                                <path d="M8.56066017,16.6819805 L10.6819805,14.5606602 C11.267767,13.9748737 12.2175144,13.9748737 12.8033009,14.5606602 L14.9246212,16.6819805 C15.5104076,17.267767 15.5104076,18.2175144 14.9246212,18.8033009 L12.8033009,20.9246212 C12.2175144,21.5104076 11.267767,21.5104076 10.6819805,20.9246212 L8.56066017,18.8033009 C7.97487373,18.2175144 7.97487373,17.267767 8.56066017,16.6819805 Z M8.56066017,4.68198052 L10.6819805,2.56066017 C11.267767,1.97487373 12.2175144,1.97487373 12.8033009,2.56066017 L14.9246212,4.68198052 C15.5104076,5.26776695 15.5104076,6.21751442 14.9246212,6.80330086 L12.8033009,8.9246212 C12.2175144,9.51040764 11.267767,9.51040764 10.6819805,8.9246212 L8.56066017,6.80330086 C7.97487373,6.21751442 7.97487373,5.26776695 8.56066017,4.68198052 Z" fill="#000000" />
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                    <span class="menu-title">Roles</span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a href="@Url.Action("ListAllUser", "SummariesResult")" class="menu-link">
+                                    <span class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/stockholm/General/User.svg-->
+                                        <span class="svg-icon svg-icon-2">
+
+                                            <i class="bi bi-person-lines-fill"></i>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                    <span class="menu-title">Summary Result</span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a href="@Url.Action("Index", "Logins")" class="menu-link">
+                                    <span class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/stockholm/General/User.svg-->
+                                        <span class="svg-icon svg-icon-2">
+
+                                            <i class="bi bi-person-lines-fill"></i>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                    <span class="menu-title">Login</span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a href="@Url.Action("Index", "Employees")" class="menu-link">
+                                    <span class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/stockholm/General/User.svg-->
+                                        <span class="svg-icon svg-icon-2">
+
+                                            <i class="bi bi-people-fill"></i>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                    <span class="menu-title">Employees</span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a href="@Url.Action("Index", "BODs")" class="menu-link">
+                                    <span class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/stockholm/General/User.svg-->
+                                        <span class="svg-icon svg-icon-2">
+                                            <i class="bi bi-person-fill"></i>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                    <span class="menu-title">BOD</span>
+                                </a>
+
+                            </div>
+                            <div class="menu-item">
+                                <a href="@Url.Action("Index", "ManagerEmps")" class="menu-link">
+                                    <span class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/duotone/Interface/Lock.svg-->
+                                        <span class="svg-icon svg-icon-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <path opacity="0.25" fill-rule="evenodd" clip-rule="evenodd" d="M3.11117 13.2288C3.27137 11.0124 5.01376 9.29156 7.2315 9.15059C8.55778 9.06629 10.1795 9 12 9C13.8205 9 15.4422 9.06629 16.7685 9.15059C18.9862 9.29156 20.7286 11.0124 20.8888 13.2288C20.9535 14.1234 21 15.085 21 16C21 16.915 20.9535 17.8766 20.8888 18.7712C20.7286 20.9876 18.9862 22.7084 16.7685 22.8494C15.4422 22.9337 13.8205 23 12 23C10.1795 23 8.55778 22.9337 7.23151 22.8494C5.01376 22.7084 3.27137 20.9876 3.11118 18.7712C3.04652 17.8766 3 16.915 3 16C3 15.085 3.04652 14.1234 3.11117 13.2288Z" fill="#12131A" />
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M13 16.7324C13.5978 16.3866 14 15.7403 14 15C14 13.8954 13.1046 13 12 13C10.8954 13 10 13.8954 10 15C10 15.7403 10.4022 16.3866 11 16.7324V18C11 18.5523 11.4477 19 12 19C12.5523 19 13 18.5523 13 18V16.7324Z" fill="#12131A" />
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7 6C7 3.23858 9.23858 1 12 1C14.7614 1 17 3.23858 17 6V10C17 10.5523 16.5523 11 16 11C15.4477 11 15 10.5523 15 10V6C15 4.34315 13.6569 3 12 3C10.3431 3 9 4.34315 9 6V10C9 10.5523 8.55228 11 8 11C7.44772 11 7 10.5523 7 10V6Z" fill="#12131A" />
+                                            </svg>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                    <span class="menu-title">Manage Employee</span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a href="@Url.Action("Index", "Departments")" class="menu-link">
+                                    <span class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/stockholm/Design/Substract.svg-->
+                                        <span class="svg-icon svg-icon-2">
+                                            <i class="bi bi-diagram-3"></i>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                    <span class="menu-title">Departments</span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a href="@Url.Action("Index", "Positions")" class="menu-link">
+                                    <span class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/stockholm/Layout/Layout-4-blocks.svg-->
+                                        <span class="svg-icon svg-icon-2">
+                                            <i class="bi bi-stack"></i>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                    <span class="menu-title">Positions</span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a href="@Url.Action("Index", "Levels")" class="menu-link">
+                                    <span class="menu-icon">
+                                        <span class="svg-icon svg-icon-2">
+                                            <i class="bi bi-bar-chart-fill"></i>
+                                        </span>
+                                    </span>
+                                    <span class="menu-title">Levels</span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a href="@Url.Action("Index", "Questions")" class="menu-link">
+                                    <span class="menu-icon">
+
+                                        <span class="svg-icon svg-icon-2">
+                                            <i class="bi bi-card-checklist"></i>
+                                        </span>
+                                    </span>
+                                    <span class="menu-title">Questions</span>
+                                </a>
+                            </div>
+                            @*<div class="menu-item">
+            <a href="@Url.Action("Index", "ManagerEmps")" class="menu-link">
+                <span class="menu-icon">
+                    <span class="svg-icon svg-icon-2">
+                        <i class="bi bi-journal-plus"></i>
+                    </span>
+                </span>
+                <span class="menu-title">Evaluate</span>
+            </a>
+        </div>*@
+                            <div class="menu-item">
+                                <a href="@Url.Action("Index", "Sumaries")" class="menu-link">
+                                    <span class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/stockholm/Layout/Layout-4-blocks.svg-->
+                                        <span class="svg-icon svg-icon-2">
+                                            <i class="bi bi-menu-down"></i>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                    <span class="menu-title">Summary</span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a href="@Url.Action("Index", "EvaluateYear")" class="menu-link">
+                                    <span class="menu-icon">
+                                        <!--begin::Svg Icon | path: icons/stockholm/Layout/Layout-4-blocks.svg-->
+                                        <span class="svg-icon svg-icon-2">
+                                            <i class="bi bi-clock-fill"></i>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                    <span class="menu-title">EvaluateYear</span>
+                                </a>
+                            </div>
+
+                        </div>
+                        <!--end::Menu-->
+                    </div>
+                </div>
+                <!--end::Aside menu-->
+                <!--begin::Footer-->
+                <div class="aside-footer flex-column-auto" id="kt_aside_footer"></div>
+                <!--end::Footer-->
+            </div>
+            <!--end::Aside-->
+            <!--begin::Wrapper-->
+            <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+
+                <!--end::Header-->
+                <!--begin::Content-->
+                <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                    <!--begin::Toolbar-->
+                    <div class="container-fluid body-content">
+                        @RenderBody()
+                    </div>
+
+                </div>
+
+            </div>
+            <!--end::Wrapper-->
+        </div>
+        <!--end::Page-->
+    </div>
+    <!--end::Root-->
+    <script src="assets/plugins/global/plugins.bundle.js" asp-append-version="true"></script>
+    <script src="assets/js/scripts.bundle.js" asp-append-version="true"></script>
+    <script src="/Scripts/ckfinder/ckfinder.js" asp-append-version="true"></script>
+    @RenderSection("scripts", required: false)
+</body>
+<!--end::Body-->
+</html>

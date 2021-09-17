@@ -1,0 +1,46 @@
+﻿@model HRE.Core.Entities.BodMemo
+
+@{
+    ViewData["Title"] = "InsertBodMemo";
+}
+
+<h2>Bod Add Memo</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+
+        <div class="form-group">
+            @Html.Label("良い点", "良い点", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Pros, new { @class = "form-control", @style = "width: 300px; height: 140px;" })
+                @Html.ValidationMessageFor(model => model.Pros, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("弱い点", "弱い点", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Cons, new { @class = "form-control", @style = "width: 300px; height: 140px;" })
+                @Html.ValidationMessageFor(model => model.Cons, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+}
+
+@*<div class="row-md-6">
+    <h4 class="btn btn-info" style="background-color: #5bde6b">@Html.ActionLink("ComeBack to List User Evaluate", "ListUser", new { id = Session["bodid"] })</h4>
+    
+</div>
+
+*@

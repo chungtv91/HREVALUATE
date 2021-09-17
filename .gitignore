@@ -6,3 +6,17 @@
 /src/HR_Evaluate/bin
 /src/HR_Evaluate/obj
 /src/packages
+/src/hr-evaluate/HRE.Application/bin
+/src/hr-evaluate/.vs
+/src/hr-evaluate/HRE.Application/obj
+/src/hr-evaluate/HRE.Application.Shared/bin
+/src/hr-evaluate/HRE.Application.Shared/obj
+/src/hr-evaluate/HRE.Core/bin
+/src/hr-evaluate/HRE.Core/obj
+/src/hr-evaluate/HRE.Core.Shared/bin
+/src/hr-evaluate/HRE.Core.Shared/obj
+/src/hr-evaluate/HRE.EntityFrameworkCore/bin
+/src/hr-evaluate/HRE.EntityFrameworkCore/obj
+/src/hr-evaluate/HRE.Web.UI/bin
+/src/hr-evaluate/HRE.Web.UI/obj
+/src/hr-evaluate/.idea/.idea.hr-evaluate/.idea

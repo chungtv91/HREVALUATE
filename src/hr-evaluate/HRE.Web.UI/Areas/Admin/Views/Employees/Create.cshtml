@@ -1,0 +1,170 @@
+﻿@model HRE.Core.Entities.Employee
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/ckfinder/ckfinder.js"></script>
+@*@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")*@
+@*<link href="~/Content/bootstrap.css" rel="stylesheet" />*@
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Employee</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row mb-5">
+        @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = " required col-form-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-form-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        @Html.LabelFor(model => model.Img, htmlAttributes: new { @class = "col-form-label col-md-2" })
+
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.Img, new { htmlAttributes = new { @class = "form-control" } })*@
+            <div class="input-group">
+                @Html.TextBoxFor(model => model.Img, new { @class = "form-control", @id = "txtImgUrl" })
+                @*@Html.TextBoxFor(model => model.Img, new { htmlAttributes = new { @class = "form-control", @id = "txtImgUrl" }, @id = "txtImgUrl" })*@
+                <button id="btnUploadImg" type="button" class="btn btn-light-linkedin">Select Image</button>
+            </div>
+            @Html.ValidationMessageFor(model => model.Img, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        @Html.LabelFor(model => model.DepartmentId, "DepartmentId", htmlAttributes: new { @class = "col-form-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("DepartmentId", null, htmlAttributes: new { @class = "form-select" })
+            @Html.ValidationMessageFor(model => model.DepartmentId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        @Html.LabelFor(model => model.CurrentPositionId, "CurrentPositionId", htmlAttributes: new { @class = "col-form-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("CurrentPositionId", null, htmlAttributes: new { @class = "form-select" })
+            @Html.ValidationMessageFor(model => model.CurrentPositionId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        @Html.LabelFor(model => model.CurrentLevelId, "CurrentLevelId", htmlAttributes: new { @class = "col-form-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("CurrentLevelId", null, htmlAttributes: new { @class = "form-select" })
+            @Html.ValidationMessageFor(model => model.CurrentLevelId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        @Html.LabelFor(model => model.DateEvaluate, htmlAttributes: new { @class = "col-form-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DateEvaluate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DateEvaluate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        @Html.LabelFor(model => model.Targets, htmlAttributes: new { @class = "col-form-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Targets, new { htmlAttributes = new { @class = "form-control", @id = "txtTarget" } })
+            @Html.ValidationMessageFor(model => model.Targets, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        @Html.LabelFor(model => model.NextPositionId, htmlAttributes: new { @class = "col-form-label col-md-2" })
+        <div class="col-md-10">
+            @*@Html.EditorFor(model => model.NextPositionId, new { htmlAttributes = new { @class = "form-control" } })*@
+
+            @Html.DropDownList("NextPositionId", null, htmlAttributes: new { @class = "form-select" })
+            @Html.ValidationMessageFor(model => model.NextPositionId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        @Html.LabelFor(model => model.NextLevelId, htmlAttributes: new { @class = "col-form-label col-md-2" })
+        <div class="col-md-10">
+
+            @Html.DropDownList("NextLevelId", null, htmlAttributes: new { @class = "form-select" })
+            @*@Html.EditorFor(model => model.NextLevelId, new { htmlAttributes = new { @class = "form-control" } })*@
+            @Html.ValidationMessageFor(model => model.NextLevelId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row mb-5">
+        @Html.LabelFor(model => model.IsEnable, htmlAttributes: new { @class = "col-form-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.IsEnable, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.IsEnable, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="text-center">
+        @*<div class="d-flex gap-2">*@
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+            @Html.ActionLink("Back to List", "Index", new { area = "Admin" }, new { @class = "btn btn-secondary" })
+        </div>
+    </div>
+</div>
+}
+
+
+@section scripts {
+    <script language="javascript" type="text/javascript">
+
+        //$(document).ready(function () {
+        //    $('#btnUploadImg').on('click', function () {
+        //        var finder = new CKFinder();
+        //        finder.SelectActionFunction=function (url) {
+        //            $('txtImgUrl').val(url);
+        //        };
+        //        finder.popup();
+        //    })
+
+        //})
+
+
+        CKEDITOR.replace("txtTarget");
+
+
+        //document.querySelector('#btnUploadImg').addEventListener('click', function (e) {
+        //    e.preventDefault();
+
+        //    var finder = new CKFinder();
+        //    finder.SelectActionFunction = function (url) {
+        //        document.querySelector('#txtImgUrl').value = url;
+        //    };
+        //    finder.popup();
+        //})
+       
+            $(function () {
+                $("#btnUploadImg").click(function () {
+
+                    var ckfinder = new CKFinder();
+                    ckfinder.selectActionFunction = function (fileurl) {
+                        $("#txtImgUrl").val(fileurl);
+                    };
+                    ckfinder.popup();
+                });
+        });
+
+    </script>
+}

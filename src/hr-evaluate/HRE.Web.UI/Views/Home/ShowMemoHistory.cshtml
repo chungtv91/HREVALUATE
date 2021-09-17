@@ -1,0 +1,288 @@
+﻿@using HRE.Core.Entities
+@model HRE.Core.Entities.BodMemo
+@{
+    //int countNumberOfMonth = 0;
+    //bool IsCountFull = false;
+    ViewData["Title"] = "ShowMemoHistory";
+    //Layout = "~/Views/Shared/NewLayout.cshtml";
+    var lstMemoOfSept = (List<BodMemo>)ViewBag.GetMemoOfSept;
+    var lstMemoOfOct = (List<BodMemo>)ViewBag.GetMemoOfOct;
+    var lstMemoOfNov = (List<BodMemo>)ViewBag.GetMemoOfNov;
+    var lstMemoOfDec = (List<BodMemo>)ViewBag.GetMemoOfDec;
+    var lstMemoOfJan = (List<BodMemo>)ViewBag.GetMemoOfJan;
+    var lstMemoOfFeb = (List<BodMemo>)ViewBag.GetMemoOfFeb;
+    var lstMemoOfMar = (List<BodMemo>)ViewBag.GetMemoOfMar;
+    var lstMemoOfApr = (List<BodMemo>)ViewBag.GetMemoOfApr;
+    var lstMemoOfMay = (List<BodMemo>)ViewBag.GetMemoOfMay;
+    var lstMemoOfJun = (List<BodMemo>)ViewBag.GetMemoOfJun;
+    var lstMemoOfJul = (List<BodMemo>)ViewBag.GetMemoOfJul;
+    var lstMemoOfAug = (List<BodMemo>)ViewBag.GetMemoOfAug;
+}
+
+<h2>日常観察のメモまとめ</h2>
+@*<div class="row-md-6">
+    <h4 class="btn btn-info" style="background-color: #ffe69e">@Html.ActionLink("ComeBack to List User Evaluate", "ListUser", new { id = Session["bodid"] })</h4>
+</div>*@
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered ">
+            <tbody>
+                <tr>
+                    <th style="background-color: #abdabc;"><h3>No</h3></th>
+                    <th align="center" style=" vertical-align: middle; background-color: #abdabc">
+                        <h3>強い点</h3>
+                    </th>
+                    <th align="center" style="vertical-align: middle; background-color: #abdabc">
+                        <h3>悪い点</h3>
+                    </th>
+                    <th align="center" style="vertical-align: middle; background-color: #abdabc">
+                        <h3>Date</h3>
+                    </th>
+                </tr>
+                @if (lstMemoOfSept.Count > 0)
+                {
+                    for (int i = 0; i < lstMemoOfSept.Count; i++)
+                    {
+
+                        <tr>
+                            @if (@i == 0)
+                            {
+                                <td rowspan="@lstMemoOfSept.Count" style="align-content:center"><h3>@lstMemoOfSept[i].MonthOfMemo</h3></td>
+                            }
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfSept[i].Pros</h3></td>
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfSept[i].Cons</h3></td>
+                            <td><h3>@lstMemoOfSept[i].CreateDate</h3></td>
+                        </tr>
+
+                    }
+                }
+
+                @if (lstMemoOfOct.Count > 0)
+                {
+                    for (int i = 0; i < lstMemoOfOct.Count; i++)
+                    {
+
+                        <tr>
+                            @if (@i == 0)
+                            {
+                                <td rowspan="@lstMemoOfOct.Count" style="align-content:center"><h3>@lstMemoOfOct[i].MonthOfMemo</h3></td>
+                            }
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfOct[i].Pros</h3></td>
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfOct[i].Cons</h3></td>
+                            <td><h3>@lstMemoOfOct[i].CreateDate</h3></td>
+                        </tr>
+
+                    }
+                }
+
+                @if (lstMemoOfNov.Count > 0)
+                {
+                    for (int i = 0; i < lstMemoOfNov.Count; i++)
+                    {
+
+                        <tr>
+                            @if (@i == 0)
+                            {
+                                <td rowspan="@lstMemoOfNov.Count" style="align-content:center"><h3>@lstMemoOfNov[i].MonthOfMemo</h3></td>
+                            }
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfNov[i].Pros</h3></td>
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfNov[i].Cons</h3></td>
+                            <td><h3>@lstMemoOfNov[i].CreateDate</h3></td>
+                        </tr>
+
+                    }
+                }
+
+                @if (lstMemoOfDec.Count > 0)
+                {
+                    for (int i = 0; i < lstMemoOfDec.Count; i++)
+                    {
+                        <tr>
+                            @if (@i == 0)
+                            {
+                                <td rowspan="@lstMemoOfDec.Count" style="align-content:center"><h3>@lstMemoOfDec[i].MonthOfMemo</h3></td>
+                            }
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfDec[i].Pros</h3></td>
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfDec[i].Cons</h3></td>
+                            <td><h3>@lstMemoOfDec[i].CreateDate</h3></td>
+                        </tr>
+                    }
+                }
+
+                @if (lstMemoOfJan.Count > 0)
+                {
+                    for (int i = 0; i < lstMemoOfJan.Count; i++)
+                    {
+                        <tr>
+                            @if (@i == 0)
+                            {
+                                <td rowspan="@lstMemoOfJan.Count" style="align-content:center"><h3>@lstMemoOfJan[i].MonthOfMemo</h3></td>
+                            }
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfJan[i].Pros</h3></td>
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfJan[i].Cons</h3></td>
+                            <td><h3>@lstMemoOfJan[i].CreateDate</h3></td>
+                        </tr>
+                    }
+                }
+
+                @if (lstMemoOfFeb.Count > 0)
+                {
+                    for (int i = 0; i < lstMemoOfFeb.Count; i++)
+                    {
+                        <tr>
+                            @if (@i == 0)
+                            {
+                                <td rowspan="@lstMemoOfFeb.Count" style="align-content:center"><h3>@lstMemoOfFeb[i].MonthOfMemo</h3></td>
+                            }
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfFeb[i].Pros</h3></td>
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfFeb[i].Cons</h3></td>
+                            <td><h3>@lstMemoOfFeb[i].CreateDate</h3></td>
+                        </tr>
+                    }
+                }
+
+                @if (lstMemoOfMar.Count > 0)
+                {
+                    for (int i = 0; i < lstMemoOfMar.Count; i++)
+                    {
+                        <tr>
+                            @if (@i == 0)
+                            {
+                                <td rowspan="@lstMemoOfMar.Count" style="align-content:center"><h3>@lstMemoOfMar[i].MonthOfMemo</h3></td>
+                            }
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfMar[i].Pros</h3></td>
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfMar[i].Cons</h3></td>
+                            <td><h3>@lstMemoOfMar[i].CreateDate</h3></td>
+                        </tr>
+                    }
+                }
+
+                @if (lstMemoOfApr.Count > 0)
+                {
+                    for (int i = 0; i < lstMemoOfApr.Count; i++)
+                    {
+                        <tr>
+                            @if (@i == 0)
+                            {
+                                <td rowspan="@lstMemoOfApr.Count" style="align-content:center"><h3>@lstMemoOfApr[i].MonthOfMemo</h3></td>
+                            }
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfApr[i].Pros</h3></td>
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfApr[i].Cons</h3></td>
+                            <td><h3>@lstMemoOfApr[i].CreateDate</h3></td>
+                        </tr>
+                    }
+                }
+
+                @if (lstMemoOfMay.Count > 0)
+                {
+                    for (int i = 0; i < lstMemoOfMay.Count; i++)
+                    {
+                        <tr>
+                            @if (@i == 0)
+                            {
+                                <td rowspan="@lstMemoOfMay.Count" style="align-content:center"><h3>@lstMemoOfMay[i].MonthOfMemo</h3></td>
+                            }
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfMay[i].Pros</h3></td>
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfMay[i].Cons</h3></td>
+                            <td><h3>@lstMemoOfMay[i].CreateDate</h3></td>
+                        </tr>
+                    }
+                }
+
+                @if (lstMemoOfJun.Count > 0)
+                {
+                    for (int i = 0; i < lstMemoOfJun.Count; i++)
+                    {
+                        <tr>
+                            @if (@i == 0)
+                            {
+                                <td rowspan="@lstMemoOfJun.Count" style="align-content:center"><h3>@lstMemoOfJun[i].MonthOfMemo</h3></td>
+                            }
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfJun[i].Pros</h3></td>
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfJun[i].Cons</h3></td>
+                            <td><h3>@lstMemoOfJun[i].CreateDate</h3></td>
+                        </tr>
+                    }
+                }
+
+                @if (lstMemoOfJul.Count > 0)
+                {
+                    for (int i = 0; i < lstMemoOfJul.Count; i++)
+                    {
+                        <tr>
+                            @if (@i == 0)
+                            {
+                                <td rowspan="@lstMemoOfJul.Count" style="align-content:center"><h3>@lstMemoOfJul[i].MonthOfMemo</h3></td>
+                            }
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfJul[i].Pros</h3></td>
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfJul[i].Cons</h3></td>
+                            <td><h3>@lstMemoOfJul[i].CreateDate</h3></td>
+                        </tr>
+                    }
+                }
+
+                @if (lstMemoOfAug.Count > 0)
+                {
+                    for (int i = 0; i < lstMemoOfAug.Count; i++)
+                    {
+                        <tr>
+                            @if (@i == 0)
+                            {
+                                <td rowspan="@lstMemoOfAug.Count" style="align-content:center"><h3>@lstMemoOfAug[i].MonthOfMemo</h3></td>
+                            }
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfAug[i].Pros</h3></td>
+                            <td align="center" style=" vertical-align:middle"><h3>@lstMemoOfAug[i].Cons</h3></td>
+                            <td><h3>@lstMemoOfAug[i].CreateDate</h3></td>
+                        </tr>
+                    }
+                }
+
+                <!-- #region name -->
+                @*@foreach (var item in lstMemoOfSept)*@
+                @*@for (int i = 0; i < lstMemoOfSept.Count; i++)
+                    {
+                        <tr>
+                            @if (@i == 0)
+                            {
+                                <td rowspan="@lstMemoOfSept.Count" align="center"><h3>@lstMemoOfSept[i].MonthOfMemo</h3></td>
+                            }
+                            <td align="center" style=" vertical-align:middle">
+                                <h3>@lstMemoOfSept[i].Pros</h3>
+                            </td>
+                            <td align="center" style=" vertical-align:middle">
+                                <h3>@lstMemoOfSept[i].Cons</h3>
+                            </td>
+                            <td><h3>@lstMemoOfSept[i].CreateDate</h3></td>
+                        </tr>
+                    }*@
+
+                <!--<tr>
+                <td colspan="3" align="center"><h3>9</h3></td>-->
+                @*<td align="center" style=" vertical-align:middle">
+                        <h3>強い点</h3>
+                    </td>
+                    <td align="center" style=" vertical-align:middle">
+                        <h3>悪い点</h3>
+                    </td>
+                    <td align="center" style=" vertical-align:middle">
+                        <h3>Date</h3>
+                    </td>*@
+                <!--</tr>
+                <tr>-->
+                @*<td colspan="3"><h3>No</h3></td>*@
+                <!--<td align="center" style=" vertical-align:middle">
+                        <h3>1強い点</h3>
+                    </td>
+                    <td align="center" style=" vertical-align:middle">
+                        <h3>2悪い点</h3>
+                    </td>
+                    <td align="center" style=" vertical-align:middle">
+                        <h3>Date</h3>
+                    </td>
+                </tr>-->
+                <!-- #endregion -->
+            </tbody>
+        </table>
+    </div>
+</div>

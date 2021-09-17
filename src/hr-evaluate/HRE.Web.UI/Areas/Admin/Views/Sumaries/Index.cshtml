@@ -1,0 +1,113 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<HRE.Core.Entities.Sumary>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="col-md-12">
+    @using (Html.BeginForm("ExportData", "Sumaries", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+        <p><input type="submit" name="Export" id="Export" value="Export To Excel" class="btn btn-warning" /></p>
+
+    }
+</div>
+
+
+<div class="row">
+
+
+    <div class="col-md-6">
+        <div class="nav navbar-nav">
+            <ul style="list-style-type:none">
+                <li style="float: left;">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.currentfilter }))
+                </li>
+
+                <li style="float:right; margin-top:30px;margin-left:20px; "> Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<table class="table">
+    <tr>
+        <th style="font-weight:bold">
+            BOD Code
+            @*@Html.DisplayNameFor(model => model.BOD.Code)*@
+        </th>
+        <th>
+            Employee Code
+            @*@Html.DisplayNameFor(model => model.Employee.Code)*@
+        </th>
+        <th>
+            QuestionName
+            @*@Html.DisplayNameFor(model => model.Question.QuestionName)*@
+        </th>
+        <th>
+            AnswerName
+            @*@Html.DisplayNameFor(model => model.AnswerName)*@
+        </th>
+        <th>
+            Score
+            @*@Html.DisplayNameFor(model => model.Score)*@
+        </th>
+        <th>
+            Score
+            @*@Html.DisplayNameFor(model => model.TotalScore)*@
+        </th>
+        <th>
+            CreateDate
+            @*@Html.DisplayNameFor(model => model.CreateDate)*@
+        </th>
+        <th>
+            UpdateDate
+            @*@Html.DisplayNameFor(model => model.UpdateDate)*@
+        </th>
+        <th>Option</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BOD.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Question.QuestionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnswerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Score)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalScore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdateDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, currentFilter = ViewBag.currentfilter }))
