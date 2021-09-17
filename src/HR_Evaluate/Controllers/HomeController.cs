@@ -21,6 +21,7 @@ namespace HR_Evaluate.Controllers
             try
             {
                 Session["empid"] = id;
+                //TempData["responseNo"] = responseNo;
 
                 var UserInfo = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
 
@@ -70,7 +71,7 @@ namespace HR_Evaluate.Controllers
                         Score = 0,
                         CreateDate = DateTime.Now,
                         UpdateDate = DateTime.Now,
-                        Evaluatetimes = 1,
+                        //Evaluatetimes = item.,
                         CurrentLevelID = _currentLevelId,
                         CurrentPositionId = _currentPositionID,
                         NextLevelID = _NextLevelID,

@@ -1,5 +1,7 @@
 ﻿namespace HR_Evaluate.Models
 {
+    using System;
+    
     public class ListUserViewModel
     {
         public int EmployeeId { get; set; }
@@ -19,6 +21,11 @@
         public int IsEnable { get; set; }
 
         public int EvaluateTimes { get; set; }
+
+        public System.DateTime FirstPeriodEvaluate { get; set; }
+        public System.DateTime SecondPeriodEvaluate { get; set; }
+        public System.DateTime ThirdPeriodEvaluate { get; set; }
+
 
         // Computed field
         public bool HasSummary { get; set; }
