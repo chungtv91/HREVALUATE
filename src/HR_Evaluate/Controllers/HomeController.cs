@@ -276,7 +276,6 @@ namespace HR_Evaluate.Controllers
 
                 TempData["empid"] = id;
 
-                //int bodid = Convert.ToInt32(TempData["ID"]);
 
                 var UserInfo = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
 
@@ -288,7 +287,6 @@ namespace HR_Evaluate.Controllers
                 ViewBag.ListQuestion = _dbContext.Questions.Where(x => x.LevelId == UserInfo.CurrentLevelId).OrderBy(x => x.SortOrder).ToList();
                 ViewBag.Emp = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
                 ViewBag.listAnswer = _dbContext.Sumaries.Where(x => x.EmpID == id && x.BodID == bodid && x.Evaluatetimes == 1).ToList();
-                //ViewBag.listAnswer = _dbContext.Sumaries.Where(x => x.EmpID == id && x.BodID == bodid).OrderBy(x => x.CreateDate).ToList();
             }
             catch (Exception ex)
             {
@@ -301,11 +299,7 @@ namespace HR_Evaluate.Controllers
         {
             try
             {
-                //var checkAnswerisNull = hrviewmodel.VMlstQuestions.Any(x => x.VMAnswerName == null);
-                //if (checkAnswerisNull)
-                //{
-                //    return JavaScript("全てコメントのところにコメントを入れてください -　The comment is not null or empty");
-                //}
+               
                 int bodid = (int)Session["bodid"];
                 int empid = Convert.ToInt32(TempData["empid"]);
                 var getSummary = _dbContext.Sumaries.Where(x => x.BodID == bodid && x.EmpID == empid && x.Evaluatetimes == 1).ToList();
@@ -526,7 +520,6 @@ namespace HR_Evaluate.Controllers
         {
             try
             {
-
                 var bodid = (int)Session["bodid"];
 
                 ViewBag.GetMemoOfSept = await _dbContext.BodMemoes.Where(x => x.MonthOfMemo == 9 && x.BodId == bodid && x.EmpId == id).ToListAsync();
