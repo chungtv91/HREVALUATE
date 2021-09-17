@@ -78,11 +78,6 @@ namespace HR_Evaluate.Models
                 .WillCascadeOnDelete(false);
 
             //add by myself
-            modelBuilder.Entity<EvaluateYear>()
-                .HasMany(e => e.BodMemoes)
-                .WithOptional(e => e.EvaluateYear)
-                .HasForeignKey(e=>e.EvaluateYearId);
-
 
             modelBuilder.Entity<BodMemo>()
                 .HasOptional(e => e.Employee)
