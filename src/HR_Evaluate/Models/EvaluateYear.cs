@@ -7,12 +7,10 @@
     using System.Data.Entity.Spatial;
 
     [Table("EvaluateYear")]
-    public partial class EvaluateYear
+    public class EvaluateYear
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public EvaluateYear()
         {
-            BodMemoes = new HashSet<BodMemo>();
             ManagerEmps = new HashSet<ManagerEmp>();
         }
 
@@ -24,10 +22,6 @@
 
         public DateTime? NextEvaluatePeriod { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BodMemo> BodMemoes { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ManagerEmp> ManagerEmps { get; set; }
     }
 }

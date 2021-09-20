@@ -16,7 +16,7 @@ namespace HR_Evaluate.Controllers
         private readonly HrEvaluateDatacontext _dbContext = new HrEvaluateDatacontext();
 
         [HttpGet]
-        public ActionResult Index(int id,int responseNo=1)
+        public ActionResult Index(int id/*,int responseNo=1*/)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace HR_Evaluate.Controllers
                         Score = 0,
                         CreateDate = DateTime.Now,
                         UpdateDate = DateTime.Now,
-                        //Evaluatetimes = item.,
+                        Evaluatetimes = 1,
                         CurrentLevelID = _currentLevelId,
                         CurrentPositionId = _currentPositionID,
                         NextLevelID = _NextLevelID,
@@ -95,13 +95,14 @@ namespace HR_Evaluate.Controllers
             return RedirectToAction("ListUser", new { id = (int)Session["bodid"] });
         }
 
-       
         [HttpGet]
         public async Task<ActionResult> ListUser(int id)
         {
             //Session["bodid"] = id;
             //TempData["ID"] = id;
             var bodid = (int)Session["bodid"];
+            TempData["EvaluateYearId"] = id;
+            Session["EvaluateYearId"] = id;
             //var empid = (int)TempData["ID"];
             //TempData["EvaluateYearId"] = id;
 
@@ -138,7 +139,7 @@ namespace HR_Evaluate.Controllers
         }
 
         [HttpGet]
-        public ActionResult Review(int id, int responseNo=1)
+        public ActionResult Review(int id/*, int responseNo=1*/)
         {
             try
             {
@@ -207,8 +208,6 @@ namespace HR_Evaluate.Controllers
             }
             return RedirectToAction("ListUser", new { id = (int)Session["bodid"] });
         }
-       
-       
 
         [HttpGet]
         public ActionResult BodInsertMemo(int id)
@@ -230,7 +229,7 @@ namespace HR_Evaluate.Controllers
                     updatedate = DateTime.Now,
                     BodId = (int)Session["bodid"],
                     EmpId = (int)TempData["empid"],
-                    MonthOfMemo = DateTime.Now.Month,
+                    MonthOfMemo = DateTime.Now.Month
                 };
                 _dbContext.BodMemoes.Add(InsertBODMemo);
                 await _dbContext.SaveChangesAsync();
@@ -240,6 +239,7 @@ namespace HR_Evaluate.Controllers
                 throw;
             }
             return RedirectToAction("Success");
+            //return RedirectToAction("ListUser", new { id = TempData["EvaluateYearId"] });
         }
 
         [HttpGet]
@@ -273,7 +273,6 @@ namespace HR_Evaluate.Controllers
             }
             catch (Exception ex)
             {
-
                 throw;
             }
             return View();

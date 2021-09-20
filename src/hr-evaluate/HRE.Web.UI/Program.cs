@@ -159,7 +159,12 @@ void UpgradeDatabase(IApplicationBuilder app)
         var seeds = new BaseSeed[]
         {
             serviceScope.ServiceProvider.GetRequiredService<RoleSeed>(),
-            serviceScope.ServiceProvider.GetRequiredService<UserSeed>()
+            serviceScope.ServiceProvider.GetRequiredService<UserSeed>(),
+            serviceScope.ServiceProvider.GetRequiredService<LevelSeed>(),
+
+            serviceScope.ServiceProvider.GetRequiredService<PositionSeed>(),
+            serviceScope.ServiceProvider.GetRequiredService<DepartmentSeed>(),
+            serviceScope.ServiceProvider.GetRequiredService<QuestionSeed>()
         };
         var cancellationToken = CancellationToken.None;
         foreach (var seed in seeds)

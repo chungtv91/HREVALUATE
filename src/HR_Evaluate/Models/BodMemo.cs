@@ -7,7 +7,7 @@
     using System.Data.Entity.Spatial;
 
     [Table("BodMemo")]
-    public partial class BodMemo
+    public class BodMemo
     {
         public int Id { get; set; }
 
