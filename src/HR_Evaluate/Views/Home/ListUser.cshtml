@@ -31,7 +31,6 @@
             <th style="text-align:center">
                 Current Grade
             </th>
-
             <th style="text-align:center">
                 Evaluate<br />
                 View / Edit
@@ -77,7 +76,7 @@
                     @item.Level
                 </td>
                 <td class="fw-bold">
-                    @if (!item.HasSummary)
+                    @if (!item.HasSummary && item.EvaluateTimes==1)
                     {
                         @Html.ActionLink("1st New", "Index", new
                         {
@@ -89,29 +88,29 @@
                         {
                             id = @item.EmployeeId@*, responseNo =1*@}, null)
                     }
-                    @*<br />  <hr />
-                        @if (!item.HasSummary)
-                        {
-                            @Html.ActionLink("2nd New", "Index", new { id = @item.EmployeeId, responseNo =2 })
-                        }
-                        else
-                        {
-                            @Html.ActionLink("2nd Edit", "Review", new { id = @item.EmployeeId, responseNo =2 }, null)
-                        }
-                        <br />  <hr />
-                        @if (!item.HasSummary)
-                        {
-                            @Html.ActionLink("3rd New", "Index", new { id = @item.EmployeeId, responseNo =3 })
-                        }
-                        else
-                        {
-                            @Html.ActionLink("3rd Edit", "Review", new { id = @item.EmployeeId, responseNo =3 }, null)
-                        }*@
+                    <br />  <hr />
+                    @if (!item.HasSummary && item.EvaluateTimes == 2)
+                    {
+                        @Html.ActionLink("2nd New", "Index", new { id = @item.EmployeeId, responseNo = 2 })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("2nd Edit", "Review", new { id = @item.EmployeeId, responseNo = 2 })
+                    }
+                    <br />  <hr />
+                    @if (!item.HasSummary && item.EvaluateTimes == 3)
+                    {
+                        @Html.ActionLink("3rd New", "Index", new { id = @item.EmployeeId, responseNo = 3 })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("3rd Edit", "Review", new { id = @item.EmployeeId, responseNo = 3 }, null)
+                    }
                 </td>
                 <td>
                     <span>30-12-2021</span><br />  <hr />
-                    @*<span>30-03-2022</span><br />  <hr />
-                        <span>30-06-2022</span>*@
+                    <span>30-03-2022</span><br />  <hr />
+                    <span>30-06-2022</span>
 
                 </td>
                 <td class="fw-bold">
@@ -128,8 +127,8 @@
                         <hr />
                         3rd*@
                     <span class="@item.StatusCss">1st @item.Status</span> <br />  <hr />
-                    @*<span class="@item.StatusCss">2nd @item.Status</span> <br />  <hr />
-                        <span class="@item.StatusCss">3rd @item.Status</span>*@
+                    <span class="@item.StatusCss">2nd @item.Status</span> <br />  <hr />
+                    <span class="@item.StatusCss">3rd @item.Status</span>
                     @*@Html.ActionLink("Edit", "Review", new { id = @item.EmployeeId })*@
 
                 </td>

@@ -16,11 +16,13 @@ namespace HR_Evaluate.Controllers
         private readonly HrEvaluateDatacontext _dbContext = new HrEvaluateDatacontext();
 
         [HttpGet]
-        public ActionResult Index(int id/*,int responseNo=1*/)
+        public ActionResult Index(int id, int responseNo = 1)
         {
             try
             {
+                TempData["responseNo"]= responseNo;
                 Session["empid"] = id;
+
                 //TempData["responseNo"] = responseNo;
 
                 var UserInfo = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
@@ -41,10 +43,12 @@ namespace HR_Evaluate.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Index(ViewModel.HrEvaluateViewModel hrviewmodel)
+        public async Task<ActionResult> Index(ViewModel.HrEvaluateViewModel hrviewmodel, int responseNo = 1)
         {
             try
             {
+                var evaluatetimes = TempData["responseNo"];
+
                 //var checkAnswerisNull = hrviewmodel.VMlstQuestions.Any(x => x.VMAnswerName == null);
                 //if (checkAnswerisNull)
                 //{
@@ -71,7 +75,7 @@ namespace HR_Evaluate.Controllers
                         Score = 0,
                         CreateDate = DateTime.Now,
                         UpdateDate = DateTime.Now,
-                        Evaluatetimes = 1,
+                        Evaluatetimes = (int)evaluatetimes,
                         CurrentLevelID = _currentLevelId,
                         CurrentPositionId = _currentPositionID,
                         NextLevelID = _NextLevelID,
@@ -139,14 +143,14 @@ namespace HR_Evaluate.Controllers
         }
 
         [HttpGet]
-        public ActionResult Review(int id/*, int responseNo=1*/)
+        public ActionResult Review(int id, int responseNo = 1)
         {
             try
             {
                 var bodid = (int)Session["bodid"];
 
                 TempData["empid"] = id;
-
+                TempData["responseNo"]= responseNo;
 
                 var UserInfo = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
 
@@ -157,7 +161,7 @@ namespace HR_Evaluate.Controllers
                 ViewBag.NextLevelName = _dbContext.Levels.FirstOrDefault(x => x.Id == getNexLevelID);
                 ViewBag.ListQuestion = _dbContext.Questions.Where(x => x.LevelId == UserInfo.CurrentLevelId).OrderBy(x => x.SortOrder).ToList();
                 ViewBag.Emp = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
-                ViewBag.listAnswer = _dbContext.Sumaries.Where(x => x.EmpID == id && x.BodID == bodid && x.Evaluatetimes == 1).ToList();
+                ViewBag.listAnswer = _dbContext.Sumaries.Where(x => x.EmpID == id && x.BodID == bodid && x.Evaluatetimes == responseNo).ToList();
             }
             catch (Exception ex)
             {
@@ -173,6 +177,8 @@ namespace HR_Evaluate.Controllers
                 //responseNo
                 int bodid = (int)Session["bodid"];
                 int empid = Convert.ToInt32(TempData["empid"]);
+                int  evaluatetimes =(int) TempData["responseNo"];
+
                 var getSummary = _dbContext.Sumaries.Where(x => x.BodID == bodid && x.EmpID == empid && x.Evaluatetimes == 1).ToList();
 
                 if (getSummary != null)
@@ -186,6 +192,7 @@ namespace HR_Evaluate.Controllers
                             getSummary[count].Score = item.NumberScore;
                             getSummary[count].TotalScore = 0;
                             getSummary[count].UpdateDate = DateTime.Now;
+                            getSummary[count].Evaluatetimes = evaluatetimes;
                         }
                         else
                         {
@@ -193,6 +200,7 @@ namespace HR_Evaluate.Controllers
                             getSummary[count].Score = 0;
                             getSummary[count].TotalScore = 0;
                             getSummary[count].UpdateDate = DateTime.Now;
+                            getSummary[count].Evaluatetimes = evaluatetimes;
                         }
                         count++;
                     }
