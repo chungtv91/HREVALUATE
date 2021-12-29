@@ -203,6 +203,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\BodMemoViewModel.cs" />
     <Compile Include="ViewModel\HrEvaluateViewModel.cs" />
+    <Compile Include="ViewModel\ResetPasswordViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\asset\ckeditor\adapters\jquery.js" />

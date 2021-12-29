@@ -6,12 +6,14 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using HR_Evaluate.Models;
+using HR_Evaluate.ViewModel;
 using HR_Evaluate.Membership;
 using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using System.Configuration;
 using System.Diagnostics;
+
 
 
 namespace HR_Evaluate.Controllers
@@ -161,17 +163,30 @@ namespace HR_Evaluate.Controllers
         }
 
         [HttpPost]
-        public ActionResult ResetPassword(Login id)
+        //public ActionResult ResetPassword(Login id,string email)
+        //{
+        //    var bodinfo = hr.Logins.SingleOrDefault(x => x.UserName == id.UserName);
+        //    string bodname = hr.BODs.FirstOrDefault(x => x.Id == bodinfo.BODID).Name;
+        //    bodinfo.Password = "123456";
+        //    hr.SaveChanges();
+
+        //    SendEmail(email, bodname);
+
+        //    return RedirectToAction("ResetSuccess", "Login");
+        //}
+        public ActionResult ResetPassword(ResetPasswordViewModel resetpasswordVM)
         {
-            var bodinfo = hr.Logins.SingleOrDefault(x => x.UserName == id.UserName);
+
+            var bodinfo = hr.Logins.SingleOrDefault(x => x.UserName == resetpasswordVM.Username);
             string bodname = hr.BODs.FirstOrDefault(x => x.Id == bodinfo.BODID).Name;
             bodinfo.Password = "123456";
             hr.SaveChanges();
 
-            SendEmail(id.Password, bodname);
+            SendEmail(resetpasswordVM.EmailAddress, bodname);
 
             return RedirectToAction("ResetSuccess", "Login");
         }
+
         [AllowAnonymous]
         public ActionResult ResetSuccess()
         {
@@ -186,7 +201,8 @@ namespace HR_Evaluate.Controllers
                 //nmail.From = new MailAddress("truong_van_Chung@hamadenvn.com", "Cigma Notification");
                 nmail.From = new MailAddress("chung.truong.van.a1y@ap.denso.com", "HR Evaluate Password");
                 //nmail.To.Add("que.luu.ngoc.a9j@ap.denso.com");
-                nmail.To.Add("chung.truong.van.a1y@ap.denso.com");
+                //nmail.To.Add("chung.truong.van.a1y@ap.denso.com");
+                nmail.To.Add(email);
                 nmail.Subject = "HR Evaluate Password";
                 //nmail.Body = EmailContent;
                 #region

@@ -36,11 +36,13 @@ namespace HR_Evaluate.Models
 
         public int? NextLevelID { get; set; }
         public int? NextPositionId { get; set; }
+        public int? EvaluateYearId { get; set; }
 
         public virtual BOD BOD { get; set; }
 
         public virtual Employee Employee { get; set; }
 
         public virtual Question Question { get; set; }
+        public virtual EvaluateYear EvaluateYear { get; set; }
     }
 }

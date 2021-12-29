@@ -55,6 +55,7 @@ namespace HR_Evaluate.Controllers
                 //    return JavaScript("全てコメントのところにコメントを入れてください -　The comment is not null or empty");
                 //}
                 var EmpID = (int)Session["empid"];
+                var EvaluateYearID = TempData["EvaluateYearId"];
 
                 var getEmpInfo = _dbContext.Employees.SingleOrDefault(x => x.Id == EmpID);
 
@@ -79,7 +80,8 @@ namespace HR_Evaluate.Controllers
                         CurrentLevelID = _currentLevelId,
                         CurrentPositionId = _currentPositionID,
                         NextLevelID = _NextLevelID,
-                        NextPositionId = _NextPositionId
+                        NextPositionId = _NextPositionId,
+                        EvaluateYearId=(int)EvaluateYearID
                     };
                     _dbContext.Sumaries.Add(sum);
 
@@ -108,7 +110,7 @@ namespace HR_Evaluate.Controllers
             TempData["EvaluateYearId"] = id;
             Session["EvaluateYearId"] = id;
             //var empid = (int)TempData["ID"];
-            //TempData["EvaluateYearId"] = id;
+           // TempData["EvaluateYearId"] = id;
 
             var users = await _dbContext.ManagerEmps
             .Where(x => x.BODID == bodid && x.EvaluateYearId == id)
@@ -126,7 +128,7 @@ namespace HR_Evaluate.Controllers
             })
             .ToListAsync();
 
-            var summaries = await _dbContext.Sumaries.Where(x => x.BodID == bodid).Select(x => new { x.EmpID, x.Evaluatetimes }).ToListAsync();
+            var summaries = await _dbContext.Sumaries.Where(x => x.BodID == bodid && x.EvaluateYearId==id).Select(x => new { x.EmpID, x.Evaluatetimes }).ToListAsync();
             foreach (var user in users)
             {
                 user.HasSummary = summaries.Any(x => x.EmpID == user.EmployeeId);
@@ -143,14 +145,14 @@ namespace HR_Evaluate.Controllers
         }
 
         [HttpGet]
-        public ActionResult Review(int id, int responseNo = 1)
+        public ActionResult Review(int id/*, int responseNo = 1*/)
         {
             try
             {
                 var bodid = (int)Session["bodid"];
 
                 TempData["empid"] = id;
-                TempData["responseNo"]= responseNo;
+                //TempData["responseNo"]= responseNo;
 
                 var UserInfo = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
 
@@ -161,7 +163,7 @@ namespace HR_Evaluate.Controllers
                 ViewBag.NextLevelName = _dbContext.Levels.FirstOrDefault(x => x.Id == getNexLevelID);
                 ViewBag.ListQuestion = _dbContext.Questions.Where(x => x.LevelId == UserInfo.CurrentLevelId).OrderBy(x => x.SortOrder).ToList();
                 ViewBag.Emp = _dbContext.Employees.SingleOrDefault(x => x.Id == id);
-                ViewBag.listAnswer = _dbContext.Sumaries.Where(x => x.EmpID == id && x.BodID == bodid && x.Evaluatetimes == responseNo).ToList();
+                ViewBag.listAnswer = _dbContext.Sumaries.Where(x => x.EmpID == id && x.BodID == bodid /*&& x.Evaluatetimes == responseNo*/).ToList();
             }
             catch (Exception ex)
             {
