@@ -19,4 +19,7 @@
 /src/hr-evaluate/HRE.EntityFrameworkCore/obj
 /src/hr-evaluate/HRE.Web.UI/bin
 /src/hr-evaluate/HRE.Web.UI/obj
-/src/hr-evaluate/.idea/.idea.hr-evaluate/.idea
+/src/hr-evaluate/.idea/
+/src/dotnet4.8/HR_Evaluate/.vs/
+/src/dotnet4.8/HR_Evaluate/HR_Evaluate/obj/
+/src/dotnet4.8/HR_Evaluate/HR_Evaluate/HR_Evaluate.csproj.user
