@@ -24,8 +24,10 @@ namespace HR_Evaluate.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            return View();
+            HR_Evaluate.Models.Login login = new HR_Evaluate.Models.Login();
+            return View(login);
         }
+
         [HttpPost]
         [AllowAnonymous]
         #region 
