@@ -23,3 +23,5 @@
 /src/dotnet4.8/HR_Evaluate/.vs/
 /src/dotnet4.8/HR_Evaluate/HR_Evaluate/obj/
 /src/dotnet4.8/HR_Evaluate/HR_Evaluate/HR_Evaluate.csproj.user
+/src/dotnet4.8/HR_Evaluate/HR_Evaluate/bin
+/src/dotnet4.8/HR_Evaluate/packages
