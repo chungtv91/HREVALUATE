@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR_Evaluate", "HR_Evaluate\HR_Evaluate.csproj", "{C0C59AEB-17F8-42BA-AA87-663B1BF0C668}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0C59AEB-17F8-42BA-AA87-663B1BF0C668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0C59AEB-17F8-42BA-AA87-663B1BF0C668}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0C59AEB-17F8-42BA-AA87-663B1BF0C668}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0C59AEB-17F8-42BA-AA87-663B1BF0C668}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C930A9CC-5342-4483-B763-C5AF353A81F9}
+	EndGlobalSection
+EndGlobal

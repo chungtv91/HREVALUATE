@@ -1,0 +1,82 @@
+﻿@model HR_Evaluate.Models.Sumary
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sumary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BOD.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BOD.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Question.QuestionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Question.QuestionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnswerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnswerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Score)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Score)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalScore)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalScore)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdateDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

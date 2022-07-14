@@ -1,0 +1,45 @@
+﻿@model IEnumerable<HR_Evaluate.Models.Role>
+
+@{
+    ViewBag.Title = "Roles";
+}
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-title">
+            <h3>Role List</h3>
+        </div>
+        <div class="card-toolbar">
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table align-middle table-row-dashed fs-6 gy-5 dataTable no-footer">
+                <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
+                    <th>
+                        @Html.DisplayNameFor(model => model.RoleName)
+                    </th>
+                    <th class="text-end">Actions</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoleName)
+                        </td>
+                        <td class="text-end">
+                            <div class="d-flex- align-items-center" gap-5>
+                                <a href="@Url.Action("Edit", new { id = item.Id })" class="text-decoration-underline">Edit</a>
+                                <a href="@Url.Action("Details", new { id = item.Id })" class="text-decoration-underline">Details</a>
+                                <a href="@Url.Action("Delete", new { id = item.Id })" class="text-decoration-underline">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+    </div>
+</div>
